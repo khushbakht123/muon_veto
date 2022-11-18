@@ -1,0 +1,32 @@
+{
+  "outputs": [
+    "eventnumber", "channel", "timestamp", "bl_mean", "bl_sig", "wf_blsub","wf_pz","trigger_heights"
+  ],
+  "processors":{
+    "bl_mean , bl_sig, bl_slope, bl_intercept":{
+      "function": "linear_slope_fit",
+      "module": "pygama.dsp.processors",
+      "args" : ["waveform[0:8]", "bl_mean","bl_sig", "bl_slope","bl_intercept"],
+      "unit": ["ADC","ADC","ADC","ADC"]
+    },
+    "wf_blsub":{
+      "function": "subtract",
+      "module": "numpy",
+      "args": ["waveform", "bl_mean", "wf_blsub"],
+      "unit": "ADC"
+    },
+    "wf_pz": {
+      "function": "pole_zero",
+      "module": "pygama.dsp.processors",
+     "args": ["wf_blsub", "25.0*us", "wf_pz"],
+      "unit": "ADC"
+    },
+    "trigger_heights": {
+      "function": "amax",
+      "module": "numpy",
+      "args": ["wf_pz", 1, "trigger_heights"],
+      "kwargs": {"signature":"(n),()->()", "types":["fi->f"]},
+      "unit": "ADC"
+    }
+  }
+}
