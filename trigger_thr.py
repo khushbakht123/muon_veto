@@ -8,7 +8,7 @@ from numba import guvectorize
 from pygama.dsp.utils import numba_defaults_kwargs as nb_kwargs
 
 @guvectorize(
-    ["void(float32[:], float32, float32[:])"], 
+    ["void(float32[:], float32, float32[:])", "void(float64[:], float64, float64[:])"], 
 #    ["void(float32[:], float32, int32[:])"],
     "(n),()->(n)",
     **nb_kwargs,
@@ -17,7 +17,7 @@ from pygama.dsp.utils import numba_defaults_kwargs as nb_kwargs
 def trigger_thr(heights: np.ndarray, value: float, triggered: np.ndarray) -> None:
       
     
-    triggered[:] = np.nan
+#    triggered[:] = np.nan
  
     if np.isnan(heights).any() or np.isnan(value):
         return
