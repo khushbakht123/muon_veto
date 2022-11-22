@@ -1,6 +1,6 @@
 {
   "outputs": [
-    "eventnumber", "channel", "timestamp", "bl_mean", "bl_sig", "wf_blsub","wf_pz","trigger_heights"
+    "eventnumber", "channel", "timestamp", "bl_mean", "bl_sig", "wf_blsub","wf_pz","trigger_heights","triggered"
   ],
   "processors":{
     "bl_mean , bl_sig, bl_slope, bl_intercept":{
@@ -26,6 +26,12 @@
       "module": "numpy",
       "args": ["wf_pz", 1, "trigger_heights"],
       "kwargs": {"signature":"(n),()->()", "types":["fi->f"]},
+      "unit": "ADC"
+    },
+    "triggered":{
+      "function": "trigger_thr",
+      "module": "config_files",
+      "args": ["trigger_heights", "15.0", "triggered"],
       "unit": "ADC"
     }
   }
