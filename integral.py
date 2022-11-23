@@ -15,10 +15,11 @@ from pygama.dsp.utils import numba_defaults_kwargs as nb_kwargs
     **nb_kwargs,
 )
 
-def integral(wfs: np.ndarray, value: float, trig: float) -> None:
+def integral(wfs: np.ndarray, value: float, integ: float) -> None:
+
 
     index = find_peaks(wfs, height = 10)[0]
     integ = 0.0
 
-   for i in index:
+    for i in index:
         integ += wfs[i]
