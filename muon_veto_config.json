@@ -33,6 +33,13 @@
       "module": "pygama.dsp.processors",
       "args": ["trigger_heights", "15.0", "triggered"],
       "unit": "ADC"
+    },
+    "integ":{
+      "function": "integral",
+      "module": "pygama.dsp.processors",
+      "args": ["wf_pz", "10.0", "integ"],
+      "unit": "ADC"
+
     }
   }
 }
