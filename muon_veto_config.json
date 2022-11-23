@@ -29,8 +29,8 @@
       "unit": "ADC"
     },
     "triggered":{
-      "function": "trigger_thr",
-      "module": "config_files",
+      "function": "trigger",
+      "module": "pygama.dsp.processors",
       "args": ["trigger_heights", "15.0", "triggered"],
       "unit": "ADC"
     }
