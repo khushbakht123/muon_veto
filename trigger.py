@@ -16,7 +16,7 @@ def trigger(heights: float, value: float, triggered: int) -> None:
     triggered = int(heights > value)
 
     
-
+#This code runs fine in jupyter
 '''@guvectorize(["void(float64[:], float64, int64[:])","void(float64[:], float64, int64[:])"], '(n),()->(n)')
 
 def trigger(x: np.ndarray, y: float, triggered: np.ndarray):
